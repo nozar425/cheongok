@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="utf-8">
+        <title>TEST SITE</title>
+        <script>
+
+     password = prompt("접근 권한 확인 (4자리 번호이며 다를경우 창이 닫힘)");
+    if(password == 1111) {
+    } else {
+repass = prompt("마지막 시도입니다.")
+if(repass == 1111) {
+} else {
+      window.close();
+    }
+}
+
+        strLine1 = "";
+        strLine2 = "";
+        
+        function SendText()
+        {
+            nocache = "&nocache=" + Math.random() * 1000000;
+            var request = new XMLHttpRequest();
+            
+            strLine1 = "&L1=" + document.getElementById("txt_form").line1LCD.value;
+            strLine2 = "&L2=" + document.getElementById("txt_form").line2LCD.value;
+            
+            request.open("GET", "ajax_inputs" + strLine1 + strLine2 + nocache, true);
+            request.send(null);
+        }
+
+        </script>
+
+    </head>
+
+	<body>
+        <input type='button' id="btn" value="새로고침 [코드작성시에만 사용]" onclick="window.location.reload()"></input>
+
+    <body onload="GetArduinoIO()">
+        <h2>LCD에 넣을 글자를 삽입하셈요</h2>
+	<p>LED는 대충 이렇게 하면 될듯해요<p>
+        <form id="txt_form" name="frmText">
+            <label>첫째줄 : <input type="text" name="line1LCD" size="16" maxlength="16" /></label><br /><br />
+            <label>둘째줄 : <input type="text" name="line2LCD" size="16" maxlength="16" /></label>
+        </form>
+        <br />
+        <input type="submit" value="전송" onclick="SendText(); alert('전송했습니다.')" />
+        <br />
+
+<h2>릴레이[220v 플러그 켜기/끄기]</h2>
+<p>릴레이는 많이들 흔히 생각하시는 IoT를 만드는데 쓰이는 부품이에요.<br>전기를 켜고 끌 수 있는 것이요.<p>
+<form action='/' method='POST'><p><input type='hidden' name='pinD13'
+ value='0'><input type='submit' value='꺼'/ onclick="alert('꺼졌습니다.')"></form>
+<form action='/' method='POST'><p><input type='hidden' name='pinD13'
+ value='1'><input type='submit' value='켜'/ onclick="alert('켜졌습니다.')"></form>
+<form action='/' method='POST'><p><input type='hidden' name='pinD13'
+ value='2'><input type='submit' value='토글'/ onclick="alert('토글')"></form>
+
+	<h4>메모</h4>
+	<p>아직은 HTML로 LCD 제어 뿐..ㅋ<br>단일파일로 대충대충~<br>작동만 하길 바람ㅋ<br>대충대충 뼈대만 잡아뒀으니 디자인은 나중에 알아서 할게요<br>이제 내일 부품만 사면 테스트 가능할듯해요<br>다른친구들은 추가로 넣고싶은 기능들 얘기해주세요 ~<br><br>완료된 것 - 웹서버 열기, html<br>남은 것 - 기능 구현 (아두이노만 오면 가능)</p>
+    </body>
+
+</html>
